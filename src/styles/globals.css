@@ -2,27 +2,42 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
+    --color-primary: #D42030;
+    --color-primary-light: #E8354A;
+    --color-primary-dark: #B01A28;
+    --color-primary-content: #FFFFFF;
+    --color-dark: #0B1121;
+    --color-dark-lighter: #131D35;
+    --color-dark-card: #162040;
+    --color-surface: #1A2548;
+    --color-surface-hover: #1E2D55;
+    --color-complementary: #0E1629;
+    --color-text-muted: #8896B3;
+    --color-text-secondary: #A3B1CC;
+    --color-accent-gold: #F5A623;
+    --color-border: #1E2D55;
     --background-image-noise: linear-gradient(
             to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
+            color-mix(in oklab, var(--color-dark) 0%, transparent),
+            color-mix(in oklab, var(--color-dark) 100%, transparent)
         ),
         url('/images/noise.png');
 }
 
 @layer base {
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-bold sm:text-3xl lg:text-4xl;
     }
 
-    a:not(.btn) {
+    h3 {
+        @apply text-xl font-semibold sm:text-2xl;
+    }
+
+    a:not(.btn):not(.nav-link):not(.logo-link):not(.footer-link):not(.no-underline) {
         @apply underline transition hover:opacity-80;
     }
 
@@ -56,23 +71,136 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+        @apply inline-flex items-center justify-center gap-2 cursor-pointer text-center font-semibold no-underline transition-all duration-300;
+        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.5rem);
+        font-size: var(--btn-font-size, 0.9375rem);
+        border-radius: var(--btn-border-radius, 0.5rem);
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white;
+        box-shadow: 0 4px 14px 0 rgba(212, 32, 48, 0.4);
 
         &:hover {
-            @apply bg-primary/85;
+            @apply bg-primary-light;
+            box-shadow: 0 6px 20px 0 rgba(212, 32, 48, 0.5);
+            transform: translateY(-1px);
         }
 
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .btn-outline {
+        @apply bg-transparent text-white border border-white/30;
+
+        &:hover {
+            @apply bg-white/10 border-white/50;
+            transform: translateY(-1px);
         }
     }
 
     .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+        --btn-font-size: 1.0625rem;
+        --btn-px: 2rem;
+        --btn-py: 1rem;
+    }
+
+    .glass-card {
+        @apply rounded-2xl border border-white/[0.08] p-6 sm:p-8 transition-all duration-300;
+        background: linear-gradient(135deg, rgba(22, 32, 64, 0.6) 0%, rgba(14, 22, 41, 0.8) 100%);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        &:hover {
+            border-color: rgba(212, 32, 48, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .section-badge {
+        @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium;
+        background: rgba(212, 32, 48, 0.12);
+        color: var(--color-primary-light);
+        border: 1px solid rgba(212, 32, 48, 0.2);
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #FFFFFF 0%, #D42030 60%, #E8354A 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .gradient-text-subtle {
+        background: linear-gradient(135deg, #FFFFFF 0%, #A3B1CC 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .glow-line {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+        opacity: 0.4;
+    }
+
+    .stat-number {
+        @apply text-4xl sm:text-5xl font-bold;
+        background: linear-gradient(135deg, #FFFFFF 0%, var(--color-primary-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(212, 32, 48, 0.15) 0%, transparent 70%);
+        filter: blur(80px);
+        pointer-events: none;
+    }
+
+    .feature-icon {
+        @apply flex items-center justify-center w-12 h-12 rounded-xl;
+        background: linear-gradient(135deg, rgba(212, 32, 48, 0.2) 0%, rgba(212, 32, 48, 0.05) 100%);
+        border: 1px solid rgba(212, 32, 48, 0.15);
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.7; }
+    }
+
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+        animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .animate-fade-in-up {
+        animation: fade-in-up 0.6s ease-out forwards;
     }
 }

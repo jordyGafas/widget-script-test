@@ -7,9 +7,10 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
     title: string;
+    description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = 'Finvictum - Direct communication between companies and stakeholders. The platform for transparent stakeholder engagement.' } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,24 +18,22 @@ const { title } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
-            <script 
+        <script
             src="https://app.finvictum.com/finvictum-embed.js?1"
             data-widget-url="https://app.finvictum.com/widget.html"
             data-api-key="2FC5EEDE-7605-495C-8B9C-812B0FC9420F"
-            ></script>
-
+        ></script>
     </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
-                <Footer />
-            </div>
+    <body class="antialiased text-white bg-dark">
+        <div class="flex flex-col min-h-screen overflow-hidden">
+            <Header />
+            <main class="grow"><slot /></main>
+            <Footer />
         </div>
     </body>
 </html>

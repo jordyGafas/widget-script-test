@@ -1,21 +1,520 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Finvictum — Direct Stakeholder Communication Platform">
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 pt-12 sm:pt-20 pb-20 sm:pb-32 overflow-hidden">
+        <!-- Background effects -->
+        <div class="hero-glow -top-40 -right-40 animate-pulse-glow"></div>
+        <div class="hero-glow -bottom-60 -left-60 animate-pulse-glow" style="animation-delay: 2s;"></div>
+
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+        <div class="relative max-w-7xl mx-auto">
+            <div class="max-w-4xl">
+                <!-- Badge -->
+                <div class="mb-8 animate-fade-in-up">
+                    <span class="section-badge">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Stakeholder Communication Platform
+                    </span>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="mb-6 animate-fade-in-up !text-5xl sm:!text-6xl lg:!text-7xl !leading-[1.08]" style="animation-delay: 0.1s;">
+                    <span class="text-white">Direct communication<br/>between </span>
+                    <span class="gradient-text">companies</span>
+                    <span class="text-white"> and </span>
+                    <span class="gradient-text">stakeholders</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg sm:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Connect with shareholders, board members, employees, and all other stakeholders — directly and without external intermediaries. Correct, fair, and transparent information.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        Contact Us
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="#platform" class="btn btn-outline btn-lg">
+                        Discover the Platform
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero visual element -->
+            <div class="hidden lg:block absolute top-0 right-0 w-[480px] h-[480px]">
+                <div class="relative w-full h-full">
+                    <!-- Abstract connected nodes visualization -->
+                    <svg viewBox="0 0 480 480" fill="none" class="w-full h-full animate-float" style="animation-delay: 1s;">
+                        <!-- Connection lines -->
+                        <line x1="240" y1="120" x2="140" y2="240" stroke="url(#line-grad)" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="240" y1="120" x2="340" y2="200" stroke="url(#line-grad)" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="140" y1="240" x2="200" y2="360" stroke="url(#line-grad)" stroke-width="1.5" opacity="0.3"/>
+                        <line x1="340" y1="200" x2="320" y2="340" stroke="url(#line-grad)" stroke-width="1.5" opacity="0.3"/>
+                        <line x1="200" y1="360" x2="320" y2="340" stroke="url(#line-grad)" stroke-width="1.5" opacity="0.3"/>
+                        <line x1="140" y1="240" x2="340" y2="200" stroke="url(#line-grad)" stroke-width="1" opacity="0.15"/>
+                        <line x1="240" y1="120" x2="200" y2="360" stroke="url(#line-grad)" stroke-width="1" opacity="0.1"/>
+
+                        <!-- Central node (company) -->
+                        <circle cx="240" cy="120" r="32" fill="url(#node-primary)" opacity="0.9"/>
+                        <circle cx="240" cy="120" r="32" stroke="#D42030" stroke-width="1.5" opacity="0.5"/>
+                        <text x="240" y="116" text-anchor="middle" fill="white" font-size="10" font-weight="600">YOUR</text>
+                        <text x="240" y="128" text-anchor="middle" fill="white" font-size="10" font-weight="600">COMPANY</text>
+
+                        <!-- Stakeholder nodes -->
+                        <circle cx="140" cy="240" r="24" fill="url(#node-secondary)" opacity="0.7"/>
+                        <circle cx="140" cy="240" r="24" stroke="#E8354A" stroke-width="1" opacity="0.3"/>
+                        <text x="140" y="244" text-anchor="middle" fill="white" font-size="8" font-weight="500">Shareholders</text>
+
+                        <circle cx="340" cy="200" r="24" fill="url(#node-secondary)" opacity="0.7"/>
+                        <circle cx="340" cy="200" r="24" stroke="#E8354A" stroke-width="1" opacity="0.3"/>
+                        <text x="340" y="204" text-anchor="middle" fill="white" font-size="8" font-weight="500">Board</text>
+
+                        <circle cx="200" cy="360" r="24" fill="url(#node-secondary)" opacity="0.7"/>
+                        <circle cx="200" cy="360" r="24" stroke="#E8354A" stroke-width="1" opacity="0.3"/>
+                        <text x="200" y="364" text-anchor="middle" fill="white" font-size="8" font-weight="500">Employees</text>
+
+                        <circle cx="320" cy="340" r="24" fill="url(#node-secondary)" opacity="0.7"/>
+                        <circle cx="320" cy="340" r="24" stroke="#E8354A" stroke-width="1" opacity="0.3"/>
+                        <text x="320" y="344" text-anchor="middle" fill="white" font-size="8" font-weight="500">Investors</text>
+
+                        <!-- Pulse rings on central node -->
+                        <circle cx="240" cy="120" r="44" stroke="#D42030" stroke-width="0.5" opacity="0.2">
+                            <animate attributeName="r" from="36" to="56" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" from="0.3" to="0" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <defs>
+                            <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#D42030"/>
+                                <stop offset="100%" stop-color="#E8354A"/>
+                            </linearGradient>
+                            <radialGradient id="node-primary" cx="50%" cy="30%">
+                                <stop offset="0%" stop-color="#E8354A"/>
+                                <stop offset="100%" stop-color="#D42030"/>
+                            </radialGradient>
+                            <radialGradient id="node-secondary" cx="50%" cy="30%">
+                                <stop offset="0%" stop-color="#1E2D55"/>
+                                <stop offset="100%" stop-color="#131D35"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glow line separator -->
+        <div class="absolute bottom-0 left-0 right-0 glow-line"></div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TRUSTED BY / STATS SECTION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-16 sm:py-20 border-b border-white/[0.04]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                <div class="text-center">
+                    <div class="stat-number mb-2">100%</div>
+                    <p class="text-text-muted text-sm">GDPR Compliant</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number mb-2">24/7</div>
+                    <p class="text-text-muted text-sm">Platform Availability</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number mb-2">Direct</div>
+                    <p class="text-text-muted text-sm">Without Intermediaries</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number mb-2">Multi</div>
+                    <p class="text-text-muted text-sm">Channel Communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ABOUT / VALUE PROPOSITION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-20 sm:py-28" id="about">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="section-badge mb-6 inline-flex">About Finvictum</span>
+                    <h2 class="text-white mb-6 !leading-tight">
+                        Connecting companies and stakeholders <span class="text-primary">directly</span>
+                    </h2>
+                    <p class="text-text-secondary text-lg leading-relaxed mb-6">
+                        Modern communication is an essential part of good governance and value creation. Finvictum brings you in contact with all your shareholders, board members, employees, and all other stakeholders.
+                    </p>
+                    <p class="text-text-secondary leading-relaxed mb-8">
+                        Our platform creates an interactive environment where companies and their stakeholders actively contribute to each other's success — with complete control over messaging, storytelling, and multi-channel communication.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 text-text-secondary border border-white/10">Transparent</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 text-text-secondary border border-white/10">Compliant</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 text-text-secondary border border-white/10">Automated</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 text-text-secondary border border-white/10">Cost-Effective</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 text-text-secondary border border-white/10">GDPR Ready</span>
+                    </div>
+                </div>
+
+                <!-- Visual card -->
+                <div class="relative">
+                    <div class="glass-card !p-0 overflow-hidden">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">Shareholder identified</p>
+                                        <p class="text-text-muted text-xs">Real-time verification complete</p>
+                                    </div>
+                                </div>
+                                <div class="h-px bg-white/5"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">AGM invitation sent</p>
+                                        <p class="text-text-muted text-xs">432 stakeholders notified</p>
+                                    </div>
+                                </div>
+                                <div class="h-px bg-white/5"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">Engagement report ready</p>
+                                        <p class="text-text-muted text-xs">89% open rate achieved</p>
+                                    </div>
+                                </div>
+                                <div class="h-px bg-white/5"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">Compliance verified</p>
+                                        <p class="text-text-muted text-xs">All GDPR requirements met</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative glow behind card -->
+                    <div class="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PLATFORM FEATURES -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-20 sm:py-28" id="platform">
+        <!-- Subtle background glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="section-badge mb-6 inline-flex">The Platform</span>
+                <h2 class="text-white mb-6">
+                    Everything you need for <span class="text-primary">stakeholder engagement</span>
+                </h2>
+                <p class="text-text-secondary text-lg">
+                    A unified platform with multiple communication channels, real-time insights, and fully automated processes — giving you complete control.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Shareholder Identification</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Know exactly who your shareholders are. Real-time identification and verification for complete transparency at every meeting.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Legally Compliant</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">All communications are legally correct and GDPR-compliant. Flawless meeting notices and documentation, every time.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Direct Communication</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Distribute information directly to all stakeholders. Control your narrative with targeted, multi-channel messaging.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Real-Time Insights</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Track engagement, monitor message opens, participation rates, and responses. Make data-driven decisions about stakeholder relations.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Segregated Groups</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Create targeted communication groups for different stakeholder segments. Right message, right audience, right time.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card group">
+                    <div class="feature-icon mb-5">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-white text-lg font-semibold mb-3">Fully Automated</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Automate the entire communication workflow. Save time and costs with efficient, streamlined processes across all channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SERVICES SECTION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-20 sm:py-28 bg-dark-lighter/30" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="section-badge mb-6 inline-flex">Services</span>
+                <h2 class="text-white mb-6">
+                    Solutions for every <span class="text-primary">corporate need</span>
+                </h2>
+                <p class="text-text-secondary text-lg">
+                    From annual general meetings to crisis communication — our platform handles it all with precision and compliance.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Service 1: AGM -->
+                <div class="glass-card flex gap-6">
+                    <div class="shrink-0">
+                        <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold mb-2">General Meeting Management</h3>
+                        <p class="text-text-muted text-sm leading-relaxed">Conduct digital shareholder meetings with integrated invitations, voting procedures, and compliance-aligned reporting — all from one platform.</p>
+                    </div>
+                </div>
+
+                <!-- Service 2: Dividend -->
+                <div class="glass-card flex gap-6">
+                    <div class="shrink-0">
+                        <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold mb-2">Dividend Process</h3>
+                        <p class="text-text-muted text-sm leading-relaxed">Automate and simplify the complete dividend workflow — from announcement to payment — with integrated shareholder communication at every step.</p>
+                    </div>
+                </div>
+
+                <!-- Service 3: Corporate Communications -->
+                <div class="glass-card flex gap-6">
+                    <div class="shrink-0">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold mb-2">Corporate Communications</h3>
+                        <p class="text-text-muted text-sm leading-relaxed">Support for M&A, mergers, and significant corporate actions. Provide structured communication channels to build stakeholder confidence during complex operations.</p>
+                    </div>
+                </div>
+
+                <!-- Service 4: ESG/CSRD -->
+                <div class="glass-card flex gap-6">
+                    <div class="shrink-0">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold mb-2">ESG & CSRD Reporting</h3>
+                        <p class="text-text-muted text-sm leading-relaxed">Multi-language distribution of sustainability and accountability reports with automated targeted delivery to relevant audiences.</p>
+                    </div>
+                </div>
+
+                <!-- Service 5: Crisis Communication (full width) -->
+                <div class="glass-card flex gap-6 lg:col-span-2">
+                    <div class="shrink-0">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-white text-lg font-semibold mb-2">Crisis Communication</h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-2xl">Pre-built communication tools for rapid, secure deployment during emergencies. When time matters most, reach every stakeholder instantly through all available channels with consistent, controlled messaging.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MOBILE APP SECTION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-20 sm:py-28">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card !p-0 overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+                        <span class="section-badge mb-6 inline-flex w-fit">Mobile App</span>
+                        <h2 class="text-white mb-6 !leading-tight">
+                            Stay connected <span class="text-primary">on the go</span>
+                        </h2>
+                        <p class="text-text-secondary text-lg leading-relaxed mb-8">
+                            Access the Finvictum platform from anywhere. Receive real-time notifications, participate in votes, and stay informed about your investments — all from your smartphone.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#" class="btn btn-primary">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                                Download for iOS
+                            </a>
+                            <a href="#" class="btn btn-outline">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 01-.609-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.2 12.69l2.498-3.182zM5.864 2.658L16.8 9.39l-2.302 2.302-8.634-8.635z"/></svg>
+                                Download for Android
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center justify-center p-8 lg:p-12">
+                        <!-- Abstract phone mockup -->
+                        <div class="relative w-56 h-[440px]">
+                            <div class="absolute inset-0 rounded-[2.5rem] border-2 border-white/10 bg-gradient-to-b from-dark-lighter to-dark overflow-hidden">
+                                <!-- Status bar -->
+                                <div class="flex items-center justify-center pt-4 pb-2">
+                                    <div class="w-20 h-5 rounded-full bg-dark-card"></div>
+                                </div>
+                                <!-- App content simulation -->
+                                <div class="px-4 pt-4 space-y-3">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-xs font-bold">F</div>
+                                        <div class="text-white text-sm font-semibold">Finvictum</div>
+                                    </div>
+                                    <div class="rounded-xl bg-white/5 p-3">
+                                        <div class="w-16 h-2 rounded bg-white/20 mb-2"></div>
+                                        <div class="w-full h-2 rounded bg-white/10 mb-1.5"></div>
+                                        <div class="w-3/4 h-2 rounded bg-white/10"></div>
+                                    </div>
+                                    <div class="rounded-xl bg-primary/10 border border-primary/20 p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <div class="w-2 h-2 rounded-full bg-primary"></div>
+                                            <div class="w-20 h-2 rounded bg-primary/30"></div>
+                                        </div>
+                                        <div class="w-full h-2 rounded bg-white/10 mb-1.5"></div>
+                                        <div class="w-5/6 h-2 rounded bg-white/10"></div>
+                                    </div>
+                                    <div class="rounded-xl bg-white/5 p-3">
+                                        <div class="w-12 h-2 rounded bg-white/20 mb-2"></div>
+                                        <div class="w-full h-2 rounded bg-white/10 mb-1.5"></div>
+                                        <div class="w-2/3 h-2 rounded bg-white/10"></div>
+                                    </div>
+                                    <div class="rounded-xl bg-white/5 p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                            <div class="w-16 h-2 rounded bg-green-400/30"></div>
+                                        </div>
+                                        <div class="w-full h-2 rounded bg-white/10 mb-1.5"></div>
+                                        <div class="w-4/5 h-2 rounded bg-white/10"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Phone glow -->
+                            <div class="absolute -inset-8 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA SECTION -->
+    <!-- ============================================ -->
+    <section class="relative px-6 sm:px-8 lg:px-12 py-20 sm:py-28">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative text-center py-16 sm:py-24 px-6 sm:px-12 rounded-3xl overflow-hidden">
+                <!-- Background gradient -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-3xl"></div>
+                <div class="absolute inset-0 border border-primary/20 rounded-3xl"></div>
+
+                <!-- Glow effects -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/15 rounded-full blur-[100px] -translate-y-1/2"></div>
+
+                <div class="relative">
+                    <h2 class="text-white mb-6 !text-3xl sm:!text-4xl lg:!text-5xl">
+                        Ready to transform your<br/><span class="text-primary">stakeholder communication?</span>
+                    </h2>
+                    <p class="text-text-secondary text-lg max-w-2xl mx-auto mb-10">
+                        Join forward-thinking companies who trust Finvictum for transparent, compliant, and efficient stakeholder engagement.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:info@finvictum.com" class="btn btn-primary btn-lg">
+                            Get in Touch
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="tel:+32479915367" class="btn btn-outline btn-lg">
+                            +32 479 91 53 67
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </Layout>
+
+<style>
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fade-in-up 0.6s ease-out forwards;
+    }
+</style>
